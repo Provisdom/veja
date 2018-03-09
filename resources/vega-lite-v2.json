@@ -826,47 +826,47 @@
       "$ref": "#/definitions/CompositeUnitSpecAlias",
       "description": "Unit spec that can have a composite mark."
     },
-    "Conditional<FieldDef>": {
+    "ConditionalFieldDef": {
       "anyOf": [
         {
-          "$ref": "#/definitions/ConditionalPredicate<FieldDef>"
+          "$ref": "#/definitions/ConditionalPredicateFieldDef"
         },
         {
-          "$ref": "#/definitions/ConditionalSelection<FieldDef>"
+          "$ref": "#/definitions/ConditionalSelectionFieldDef"
         }
       ]
     },
-    "Conditional<MarkPropFieldDef>": {
+    "ConditionalMarkPropFieldDef": {
       "anyOf": [
         {
-          "$ref": "#/definitions/ConditionalPredicate<MarkPropFieldDef>"
+          "$ref": "#/definitions/ConditionalPredicateMarkPropFieldDef"
         },
         {
-          "$ref": "#/definitions/ConditionalSelection<MarkPropFieldDef>"
+          "$ref": "#/definitions/ConditionalSelectionMarkPropFieldDef"
         }
       ]
     },
-    "Conditional<TextFieldDef>": {
+    "ConditionalTextFieldDef": {
       "anyOf": [
         {
-          "$ref": "#/definitions/ConditionalPredicate<TextFieldDef>"
+          "$ref": "#/definitions/ConditionalPredicateTextFieldDef"
         },
         {
-          "$ref": "#/definitions/ConditionalSelection<TextFieldDef>"
+          "$ref": "#/definitions/ConditionalSelectionTextFieldDef"
         }
       ]
     },
-    "Conditional<ValueDef>": {
+    "ConditionalValueDef": {
       "anyOf": [
         {
-          "$ref": "#/definitions/ConditionalPredicate<ValueDef>"
+          "$ref": "#/definitions/ConditionalPredicateValueDef"
         },
         {
-          "$ref": "#/definitions/ConditionalSelection<ValueDef>"
+          "$ref": "#/definitions/CConditionalSelectionValueDef"
         }
       ]
     },
-    "ConditionalPredicate<FieldDef>": {
+    "ConditionalPredicateFieldDef": {
       "additionalProperties": false,
       "properties": {
         "aggregate": {
@@ -896,7 +896,7 @@
           "description": "__Required.__ A string defining the name of the field from which to pull a data value\nor an object defining iterated values from the [`repeat`](https://vega.github.io/vega-lite/docs/repeat.html) operator.\n\n__Note:__ Dots (`.`) and brackets (`[` and `]`) can be used to access nested objects (e.g., `\"field\": \"foo.bar\"` and `\"field\": \"foo['bar']\"`).\nIf field names contain dots or brackets but are not nested, you can use `\\\\` to escape dots and brackets (e.g., `\"a\\\\.b\"` and `\"a\\\\[0\\\\]\"`).\nSee more details about escaping in the [field documentation](https://vega.github.io/vega-lite/docs/field.html).\n\n__Note:__ `field` is not required if `aggregate` is `count`."
         },
         "test": {
-          "$ref": "#/definitions/LogicalOperand<Predicate>"
+          "$ref": "#/definitions/LogicalOperandPredicate"
         },
         "timeUnit": {
           "$ref": "#/definitions/TimeUnit",
@@ -913,7 +913,7 @@
       ],
       "type": "object"
     },
-    "ConditionalPredicate<MarkPropFieldDef>": {
+    "ConditionalPredicateMarkPropFieldDef": {
       "additionalProperties": false,
       "properties": {
         "aggregate": {
@@ -972,7 +972,7 @@
           "description": "Sort order for the encoded field.\nSupported `sort` values include `\"ascending\"`, `\"descending\"` and `null` (no sorting).\nFor fields with discrete domains, `sort` can also be a [sort field definition object](https://vega.github.io/vega-lite/docs/sort.html#sort-field).\n\n__Default value:__ `\"ascending\"`"
         },
         "test": {
-          "$ref": "#/definitions/LogicalOperand<Predicate>"
+          "$ref": "#/definitions/LogicalOperandPredicate"
         },
         "timeUnit": {
           "$ref": "#/definitions/TimeUnit",
@@ -989,7 +989,7 @@
       ],
       "type": "object"
     },
-    "ConditionalPredicate<TextFieldDef>": {
+    "ConditionalPredicateTextFieldDef": {
       "additionalProperties": false,
       "properties": {
         "aggregate": {
@@ -1023,7 +1023,7 @@
           "type": "string"
         },
         "test": {
-          "$ref": "#/definitions/LogicalOperand<Predicate>"
+          "$ref": "#/definitions/LogicalOperandPredicate"
         },
         "timeUnit": {
           "$ref": "#/definitions/TimeUnit",
@@ -1040,11 +1040,11 @@
       ],
       "type": "object"
     },
-    "ConditionalPredicate<ValueDef>": {
+    "ConditionalPredicateValueDef": {
       "additionalProperties": false,
       "properties": {
         "test": {
-          "$ref": "#/definitions/LogicalOperand<Predicate>"
+          "$ref": "#/definitions/LogicalOperandPredicate"
         },
         "value": {
           "description": "A constant value in visual domain (e.g., `\"red\"` / \"#0099ff\" for color, values between `0` to `1` for opacity).",
@@ -1061,7 +1061,7 @@
       ],
       "type": "object"
     },
-    "ConditionalSelection<FieldDef>": {
+    "ConditionalSelectionFieldDef": {
       "additionalProperties": false,
       "properties": {
         "aggregate": {
@@ -1109,7 +1109,7 @@
       ],
       "type": "object"
     },
-    "ConditionalSelection<MarkPropFieldDef>": {
+    "ConditionalSelectionMarkPropFieldDef": {
       "additionalProperties": false,
       "properties": {
         "aggregate": {
@@ -1186,7 +1186,7 @@
       ],
       "type": "object"
     },
-    "ConditionalSelection<TextFieldDef>": {
+    "ConditionalSelectionTextFieldDef": {
       "additionalProperties": false,
       "properties": {
         "aggregate": {
@@ -1238,7 +1238,7 @@
       ],
       "type": "object"
     },
-    "ConditionalSelection<ValueDef>": {
+    "CConditionalSelectionValueDef": {
       "additionalProperties": false,
       "properties": {
         "selection": {
@@ -1492,7 +1492,7 @@
       ]
     },
     "Datasets": {
-      "$ref": "#/definitions/Dict<InlineDataset>"
+      "$ref": "#/definitions/DictInlineDataset"
     },
     "DateTime": {
       "additionalProperties": false,
@@ -1572,7 +1572,7 @@
       "minimum": 1,
       "type": "number"
     },
-    "Dict<InlineDataset>": {
+    "DictInlineDataset": {
       "additionalProperties": {
         "$ref": "#/definitions/InlineDataset"
       },
@@ -2027,11 +2027,11 @@
         "condition": {
           "anyOf": [
             {
-              "$ref": "#/definitions/Conditional<ValueDef>"
+              "$ref": "#/definitions/ConditionalValueDef"
             },
             {
               "items": {
-                "$ref": "#/definitions/Conditional<ValueDef>"
+                "$ref": "#/definitions/ConditionalValueDef"
               },
               "type": "array"
             }
@@ -2085,11 +2085,11 @@
         "condition": {
           "anyOf": [
             {
-              "$ref": "#/definitions/Conditional<ValueDef>"
+              "$ref": "#/definitions/ConditionalValueDef"
             },
             {
               "items": {
-                "$ref": "#/definitions/Conditional<ValueDef>"
+                "$ref": "#/definitions/ConditionalValueDef"
               },
               "type": "array"
             }
@@ -2172,11 +2172,11 @@
         "condition": {
           "anyOf": [
             {
-              "$ref": "#/definitions/Conditional<ValueDef>"
+              "$ref": "#/definitions/ConditionalValueDef"
             },
             {
               "items": {
-                "$ref": "#/definitions/Conditional<ValueDef>"
+                "$ref": "#/definitions/ConditionalValueDef"
               },
               "type": "array"
             }
@@ -2335,7 +2335,7 @@
       "additionalProperties": false,
       "properties": {
         "filter": {
-          "$ref": "#/definitions/LogicalOperand<Predicate>",
+          "$ref": "#/definitions/LogicalOperandPredicate",
           "description": "The `filter` property must be one of the predicate definitions:\n(1) an [expression](https://vega.github.io/vega-lite/docs/types.html#expression) string,\nwhere `datum` can be used to refer to the current data object;\n(2) one of the field predicates: [equal predicate](https://vega.github.io/vega-lite/docs/filter.html#equal-predicate);\n[range predicate](filter.html#range-predicate), [one-of predicate](https://vega.github.io/vega-lite/docs/filter.html#one-of-predicate);\n(3) a [selection predicate](https://vega.github.io/vega-lite/docs/filter.html#selection-predicate);\nor (4) a logical operand that combines (1), (2), or (3)."
         }
       },
@@ -3369,12 +3369,12 @@
       ],
       "type": "string"
     },
-    "LogicalAnd<Predicate>": {
+    "LogicalAndPredicate": {
       "additionalProperties": false,
       "properties": {
         "and": {
           "items": {
-            "$ref": "#/definitions/LogicalOperand<Predicate>"
+            "$ref": "#/definitions/LogicalOperandPredicate"
           },
           "type": "array"
         }
@@ -3399,11 +3399,11 @@
       ],
       "type": "object"
     },
-    "LogicalNot<Predicate>": {
+    "LogicalNotPredicate": {
       "additionalProperties": false,
       "properties": {
         "not": {
-          "$ref": "#/definitions/LogicalOperand<Predicate>"
+          "$ref": "#/definitions/LogicalOperandPredicate"
         }
       },
       "required": [
@@ -3423,16 +3423,16 @@
       ],
       "type": "object"
     },
-    "LogicalOperand<Predicate>": {
+    "LogicalOperandPredicate": {
       "anyOf": [
         {
-          "$ref": "#/definitions/LogicalNot<Predicate>"
+          "$ref": "#/definitions/LogicalNotPredicate"
         },
         {
-          "$ref": "#/definitions/LogicalAnd<Predicate>"
+          "$ref": "#/definitions/LogicalAndPredicate"
         },
         {
-          "$ref": "#/definitions/LogicalOr<Predicate>"
+          "$ref": "#/definitions/LogicalOrPredicate"
         },
         {
           "$ref": "#/definitions/Predicate"
@@ -3455,12 +3455,12 @@
         }
       ]
     },
-    "LogicalOr<Predicate>": {
+    "LogicalOrPredicate": {
       "additionalProperties": false,
       "properties": {
         "or": {
           "items": {
-            "$ref": "#/definitions/LogicalOperand<Predicate>"
+            "$ref": "#/definitions/LogicalOperandPredicate"
           },
           "type": "array"
         }
@@ -5732,7 +5732,7 @@
       ],
       "type": "object"
     },
-    "TopLevel<FacetedUnitSpec>": {
+    "TopLevelFacetedUnitSpec": {
       "additionalProperties": false,
       "properties": {
         "$schema": {
@@ -5830,7 +5830,7 @@
       ],
       "type": "object"
     },
-    "TopLevel<FacetSpec>": {
+    "TopLevelFacetSpec": {
       "additionalProperties": false,
       "properties": {
         "$schema": {
@@ -5921,7 +5921,7 @@
       ],
       "type": "object"
     },
-    "TopLevel<HConcatSpec>": {
+    "TopLevelHConcatSpec": {
       "additionalProperties": false,
       "properties": {
         "$schema": {
@@ -6003,7 +6003,7 @@
       ],
       "type": "object"
     },
-    "TopLevel<LayerSpec>": {
+    "TopLevelLayerSpec": {
       "additionalProperties": false,
       "properties": {
         "$schema": {
@@ -6100,7 +6100,7 @@
       ],
       "type": "object"
     },
-    "TopLevel<RepeatSpec>": {
+    "TopLevelRepeatSpec": {
       "additionalProperties": false,
       "properties": {
         "$schema": {
@@ -6183,7 +6183,7 @@
       ],
       "type": "object"
     },
-    "TopLevel<VConcatSpec>": {
+    "TopLevelVConcatSpec": {
       "additionalProperties": false,
       "properties": {
         "$schema": {
@@ -6268,22 +6268,22 @@
     "TopLevelExtendedSpec": {
       "anyOf": [
         {
-          "$ref": "#/definitions/TopLevel<FacetedUnitSpec>"
+          "$ref": "#/definitions/TopLevelFacetedUnitSpec"
         },
         {
-          "$ref": "#/definitions/TopLevel<LayerSpec>"
+          "$ref": "#/definitions/TopLevelLayerSpec"
         },
         {
-          "$ref": "#/definitions/TopLevel<FacetSpec>"
+          "$ref": "#/definitions/TopLevelFacetSpec"
         },
         {
-          "$ref": "#/definitions/TopLevel<RepeatSpec>"
+          "$ref": "#/definitions/TopLevelRepeatSpec"
         },
         {
-          "$ref": "#/definitions/TopLevel<VConcatSpec>"
+          "$ref": "#/definitions/TopLevelVConcatSpec"
         },
         {
-          "$ref": "#/definitions/TopLevel<HConcatSpec>"
+          "$ref": "#/definitions/TopLevelHConcatSpec"
         }
       ]
     },
@@ -6429,14 +6429,14 @@
         "condition": {
           "anyOf": [
             {
-              "$ref": "#/definitions/Conditional<FieldDef>"
+              "$ref": "#/definitions/ConditionalFieldDef"
             },
             {
-              "$ref": "#/definitions/Conditional<ValueDef>"
+              "$ref": "#/definitions/ConditionalValueDef"
             },
             {
               "items": {
-                "$ref": "#/definitions/Conditional<ValueDef>"
+                "$ref": "#/definitions/ConditionalValueDef"
               },
               "type": "array"
             }
@@ -6461,14 +6461,14 @@
         "condition": {
           "anyOf": [
             {
-              "$ref": "#/definitions/Conditional<MarkPropFieldDef>"
+              "$ref": "#/definitions/ConditionalMarkPropFieldDef"
             },
             {
-              "$ref": "#/definitions/Conditional<ValueDef>"
+              "$ref": "#/definitions/ConditionalValueDef"
             },
             {
               "items": {
-                "$ref": "#/definitions/Conditional<ValueDef>"
+                "$ref": "#/definitions/ConditionalValueDef"
               },
               "type": "array"
             }
@@ -6493,14 +6493,14 @@
         "condition": {
           "anyOf": [
             {
-              "$ref": "#/definitions/Conditional<TextFieldDef>"
+              "$ref": "#/definitions/ConditionalTextFieldDef"
             },
             {
-              "$ref": "#/definitions/Conditional<ValueDef>"
+              "$ref": "#/definitions/ConditionalValueDef"
             },
             {
               "items": {
-                "$ref": "#/definitions/Conditional<ValueDef>"
+                "$ref": "#/definitions/ConditionalValueDef"
               },
               "type": "array"
             }
