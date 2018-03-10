@@ -4,7 +4,7 @@ A Clojure library for displaying [Vega](https://vega.github.io/vega/) and [Vega 
 visualizations in [JupyterLab](https://github.com/jupyterlab/jupyterlab). Simply attaches the appropriate MIME
 type to the Vega(Lite) definition, defined as Clojure maps/vectors matching the JSON schema.
 
-*NOTE* - this may work with Jupyter notebooks as well, with the right plugin. We haven't tried it.
+*NOTE* - this may work with Jupyter notebook as well, with the right plugin. We haven't tried it.
 
 ## Usage
 
