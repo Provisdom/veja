@@ -30,6 +30,11 @@ data-structures corresponding to the JSON definition. Both functions also accept
 `print-validation-result`, which will additionally pretty-print the results of JSON schema validation against your
 Vega definition. 
 
+*NOTE* - Vega may still produce a plot even if JSON schema validation fails, which is why the `print-validation-result`
+simply adds to the output and does not throw an exception. Schema validation output can be very verbose in the case of
+a failure, so unless there's an obvious problem with the chart output, you'll want to leave `print-validation-result`
+as the default of `false`.
+
 ## License
 
 Copyright © 2018 Provisdom Corp.
