@@ -1,12 +1,14 @@
 # veja
 
-A Clojure library for displaying [Vega](https://vega.github.io/) and [Vega Lite](https://vega.github.io/vega-lite/) 
+A Clojure library for displaying [Vega](https://vega.github.io/vega/) and [Vega Lite](https://vega.github.io/vega-lite/) 
 visualizations in [JupyterLab](https://github.com/jupyterlab/jupyterlab). Simply attaches the appropriate MIME
 type to the Vega(Lite) definition, defined as Clojure maps/vectors matching the JSON schema.
 
 *NOTE* - this may work with Jupyter notebooks as well, with the right plugin. We haven't tried it.
 
 ## Usage
+
+Run JupyterLab using the [lein-jupyter](https://github.com/Provisdom/lein-jupyter) plug-in (PR pending for the main repo).
 
 ```clojure
 (require '[provisdom.veja.core :as veja])
