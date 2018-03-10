@@ -8,7 +8,8 @@ type to the Vega(Lite) definition, defined as Clojure maps/vectors matching the 
 
 ## Usage
 
-Run JupyterLab using the [lein-jupyter](https://github.com/Provisdom/lein-jupyter) plug-in (PR pending for the main repo).
+Run JupyterLab using the [lein-jupyter](https://github.com/Provisdom/lein-jupyter) plug-in. Version 0.1.16 and above should 
+have JupyterLab support.
 
 ```clojure
 (require '[provisdom.veja.core :as veja])
