@@ -8,8 +8,10 @@ type to the Vega(Lite) definition, defined as Clojure maps/vectors matching the 
 
 ## Usage
 
+Use dependency `[provisdom/veja "0.2.0"]`
+
 Run JupyterLab using the [lein-jupyter](https://github.com/clojupyter/lein-jupyter) plug-in. Version 0.1.16 and above should 
-have JupyterLab support.
+have JupyterLab support. Use of older versions of Vega (Vega 2/Vega Lite 1) will require the [vega2-extension](https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/vega2-extension).
 
 ```clojure
 (require '[provisdom.veja.core :as veja])
@@ -21,12 +23,19 @@ have JupyterLab support.
           :encoding {:x {:field :a, :type :ordinal}
                      :y {:field :b :type :quantitative}}})
                      
-(veja/vega-lite bar)
+(veja/vega :vega-lite bar)
 ```
 <img src="https://github.com/Provisdom/veja/blob/master/doc/visualization.png"/>
 
-The `provisdom.veja.core` namespace contains two functions: `vega` and `vega-lite`. Each takes Vega data defined as Clojure
-data-structures corresponding to the JSON definition. Both functions also accept an optional second argument,
+The `vega` function handles plotting for the various Vega flavors. It has two required arguments: `vega-type` and `vega-data`. 
+`vega-data` is the Vega plot defined as EDN, following the appropriate JSON schema for `vega-type`. Valid values of
+`vega-type` are:
+* :vega - Vega version 2
+* :vega3 - Vega version 3
+* :vega-lite - Vega Lite version 1
+* :vega-lite2 - Vega LIte version 2
+
+The `vega` function also accepts an optional second argument,
 `print-validation-result`, which will additionally pretty-print the results of JSON schema validation against your
 Vega definition. 
 
