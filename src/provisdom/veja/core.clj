@@ -4,31 +4,30 @@
             [scjsv.core :as v]
             [clojure.pprint :refer [pprint]]))
 
-(def validate-vega-lite (v/validator (slurp (io/resource "vega-lite-v2.json"))))
-(def validate-vega (v/validator (slurp (io/resource "vega-v3.json"))))
+(def vega-defs {:vega-lite {:validator (v/validator (slurp (io/resource "vega-lite.json")))
+                            :schema "https://vega.github.io/schema/vega-lite/v1.json"
+                            :mime-type "application/vnd.vegalite.v1+json"}
+                :vega-lite2 {:validator (v/validator (slurp (io/resource "vega-lite-v2.json")))
+                             :schema "https://vega.github.io/schema/vega-lite/v2.json"
+                             :mime-type "application/vnd.vegalite.v2+json"}
+                :vega {:validator (v/validator (slurp (io/resource "vega-v2.json")))
+                       :schema "https://vega.github.io/schema/vega/v2.json"
+                       :mime-type "application/vnd.vega.v2+json"}
+                :vega3 {:validator (v/validator (slurp (io/resource "vega-v3.json")))
+                        :schema "https://vega.github.io/schema/vega/v3.json"
+                        :mime-type "application/vnd.vega.v3+json"}})
 
-(defrecord VegaLite [vega-data]
+
+
+(defrecord Vega [vega-data vega-type]
   mc/PMimeConvertible
   (to-mime [_]
     (mc/stream-to-string
-      {:application/vnd.vegalite.v2+json (assoc vega-data :$schema "https://vega.github.io/schema/vega-lite/v2.json")})))
-
-(defrecord Vega [vega-data]
-  mc/PMimeConvertible
-  (to-mime [_]
-    (mc/stream-to-string
-      {:application/vnd.vega.v3+json (assoc vega-data :$schema "https://vega.github.io/schema/vega/v3.json")})))
+      {(-> vega-defs vega-type :mime-type) (assoc vega-data :$schema (-> vega-defs vega-type :schema))})))
 
 (defn vega
-  ([vega-data] (vega vega-data false))
-  ([vega-data print-validation-result]
-   (when-let [error (and print-validation-result (validate-vega vega-data))]
+  ([vega-type vega-data] (vega vega-type vega-data false))
+  ([vega-type vega-data print-validation-result]
+   (when-let [error (and print-validation-result ((-> vega-defs vega-type :validator) vega-data))]
      (pprint error))
-   (Vega. vega-data)))
-
-(defn vega-lite
-  ([vega-data] (vega-lite vega-data false))
-  ([vega-data print-validation-result]
-   (when-let [error (and print-validation-result (validate-vega-lite vega-data))]
-     (pprint error))
-   (VegaLite. vega-data)))
+   (Vega. vega-data vega-type)))

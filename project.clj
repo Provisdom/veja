@@ -1,4 +1,4 @@
-(defproject provisdom/veja "0.1.0"
+(defproject provisdom/veja "0.2.0"
   :description "Clojure library to display Vega and Vega-Lite charts in JupyterLab"
   :url "https://github.com/Provisdom/veja"
   :scm {:url "https://github.com/Provisdom/veja"}
