@@ -45,7 +45,7 @@ rolled out.
           :encoding {:x {:field :a, :type :ordinal}
                      :y {:field :b :type :quantitative}}})
                      
-(veja/vega :vega-lite bar)
+(veja/vega-lite bar)
 ```
 <img src="https://github.com/Provisdom/veja/blob/master/doc/visualization.png"/>
 
