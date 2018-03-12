@@ -11,7 +11,12 @@ type to the Vega(Lite) definition, defined as Clojure maps/vectors matching the 
 Use dependency `[provisdom/veja "0.2.0"]`
 
 Run JupyterLab using the [lein-jupyter](https://github.com/clojupyter/lein-jupyter) plug-in. Version 0.1.16 and above should 
-have JupyterLab support. Use of older versions of Vega (Vega 2/Vega Lite 1) will require the [vega2-extension](https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/vega2-extension).
+have JupyterLab support. JupyterLab currently has native support for Vega 2/Vega Lite 1. Vega 3/Vega Lite 2 will become the default
+in a near-future release of JupyterLab, but until then if you want Vega 3/Vega Lite 2 support (recommended)
+install the vega3-extension with:
+
+`jupyter labextension install @jupyterlab/vega3-extension`
+
 
 The `vega*` function handles plotting for the various Vega flavors. It has two required arguments: `vega-type` and `vega-data`. 
 `vega-data` is the Vega plot defined as EDN, following the appropriate JSON schema for `vega-type`. Valid values of
