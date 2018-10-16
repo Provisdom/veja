@@ -1,5 +1,5 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.9.0"}
         clojupyter/clojupyter {:git/url "git@github.com:Provisdom/clojupyter.git"
-                               :sha "47dd794fd435de71369fb1ddae8c7e56d30aa85f"}
+                               :sha "54e3d3d6ae7772fd651f43915a65b3d518a0e4ab"}
         metosin/scjsv {:mvn/version "0.4.1"}}}
