@@ -42,3 +42,32 @@
 ;;; of Vega/Vega Lite.
 (def vega (partial vega* :vega3))
 (def vega-lite (partial vega* :vega-lite2))
+
+;;; Implementation is of mc/PMimeConvertible to integrate with clojupyter
+(defrecord Markdown [content]
+  mc/PMimeConvertible
+  (to-mime [_]
+    (mc/stream-to-string
+      {"text/markdown" content})))
+
+(defn markdown
+  [content]
+  (Markdown. content))
+
+;;; Implementation is of mc/PMimeConvertible to integrate with clojupyter
+(defrecord Latex [content]
+  mc/PMimeConvertible
+  (to-mime [_]
+    (mc/stream-to-string
+      {"text/latex"  (str "$$" content "$$")})))
+
+(defn latex
+  [content]
+  (Markdown. content))
+
+(def ^:dynamic *jupyter* false)
+
+(defmacro jupyter
+  [& forms]
+  `(when *jupyter*
+     ~@forms))
