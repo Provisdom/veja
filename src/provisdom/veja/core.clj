@@ -63,7 +63,7 @@
 
 (defn latex
   [content]
-  (Markdown. content))
+  (Latex. content))
 
 (def ^:dynamic *jupyter* false)
 
